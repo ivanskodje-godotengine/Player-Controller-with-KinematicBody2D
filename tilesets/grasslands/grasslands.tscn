@@ -1,0 +1,153 @@
+[gd_scene load_steps=8 format=1]
+
+[ext_resource path="res://tilesets/grasslands/tilesheet.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16.0438, 16.0757 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -15, 16, 16, 0, 16, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -16, 0, 16, -16, 16, 16, -16, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 16, 16, -16, 16, -16, -16, -10, -16, 0, -13 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 16, 16, 0, -13, 11, -13 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 16, -16, 16, 16, 11, -13, 15, -16 )
+
+[node name="grasslands" type="Node2D"]
+
+[node name="sprite_floor" type="Sprite" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 23.6511, 22.7751 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="static_body_2d" type="StaticBody2D" parent="sprite_floor"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="sprite_floor/static_body_2d"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="sprite_slope_1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 111, 22 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 64, 96, 32, 32 )
+
+[node name="static_body_2d" type="StaticBody2D" parent="sprite_slope_1"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="collision" type="CollisionPolygon2D" parent="sprite_slope_1/static_body_2d"]
+
+build_mode = 0
+polygon = Vector2Array( -15, 16, 16, 0, 16, 16 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="sprite_slope_2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 152, 22 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 96, 96, 32, 32 )
+
+[node name="static_body_2d" type="StaticBody2D" parent="sprite_slope_2"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 6 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="collision" type="CollisionPolygon2D" parent="sprite_slope_2/static_body_2d"]
+
+build_mode = 0
+polygon = Vector2Array( -16, 0, 16, -16, 16, 16, -16, 16 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="sprite_bumpy_floor" type="Sprite" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 68, 22 )
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 160, 0, 32, 32 )
+
+[node name="static_body_2d" type="StaticBody2D" parent="sprite_bumpy_floor"]
+
+editor/display_folded = true
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 3 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/trigger = false
+shapes/2/shape = SubResource( 4 )
+shapes/2/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/2/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="collision" type="CollisionPolygon2D" parent="sprite_bumpy_floor/static_body_2d"]
+
+build_mode = 0
+polygon = Vector2Array( -16, -16, -10, -16, 0, -13, 11, -13, 15, -16, 16, -16, 16, 16, -16, 16 )
+shape_range = Vector2( 0, 2 )
+trigger = false
+
+
